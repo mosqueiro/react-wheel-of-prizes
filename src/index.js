@@ -7,6 +7,9 @@ const WheelComponent = ({
   onFinished,
   primaryColor = 'black',
   contrastColor = 'white',
+  numberColor='white',
+  numberPrefix='Drawn: ',
+  yourNumber = 0,
   buttonText = 'Spin',
   isOnlyOnce = true,
   size = 290,
@@ -55,6 +58,7 @@ const WheelComponent = ({
       document.getElementById('wheel').appendChild(canvas)
     }
     canvas.addEventListener('click', spin, false)
+        
     canvasContext = canvas.getContext('2d')
   }
   const spin = () => {
@@ -167,6 +171,7 @@ const WheelComponent = ({
     ctx.fillStyle = contrastColor
     ctx.textAlign = 'center'
     ctx.fillText(buttonText, centerX, centerY + 3)
+    
     ctx.stroke()
 
     // Draw outer circle
@@ -198,10 +203,10 @@ const WheelComponent = ({
     if (i < 0) i = i + segments.length
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
-    ctx.fillStyle = primaryColor
+    ctx.fillStyle = numberColor
     ctx.font = 'bold 1.5em ' + fontFamily
     currentSegment = segments[i]
-    isStarted && ctx.fillText(currentSegment, centerX + 10, centerY + size + 50)
+    isStarted && ctx.fillText('Your: '+ yourNumber + ' / ' + numberPrefix + currentSegment, centerX + 10, centerY + size + 50)
   }
   const clear = () => {
     const ctx = canvasContext
