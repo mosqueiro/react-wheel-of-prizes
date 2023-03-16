@@ -1,3 +1,8 @@
 /* add css module styles here (optional) */
 
 
+#canvas {
+    width: 90vw !important;
+    aspect-ratio: 1 !important;
+  }
+  

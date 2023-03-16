@@ -10,6 +10,10 @@ const WheelComponent = ({
   buttonText = 'Spin',
   isOnlyOnce = true,
   size = 290,
+  ww = 1000,
+  hh = 800,
+  centerX = 300,
+  centerY = 300, 
   upDuration = 100,
   downDuration = 1000,
   fontFamily = 'proxima-nova'
@@ -27,8 +31,8 @@ const WheelComponent = ({
   const downTime = segments.length * downDuration
   let spinStart = 0
   let frames = 0
-  const centerX = 300
-  const centerY = 300
+  //const centerX = 300
+  //const centerY = 300
   useEffect(() => {
     wheelInit()
     setTimeout(() => {
@@ -45,8 +49,8 @@ const WheelComponent = ({
     console.log(navigator)
     if (navigator.userAgent.indexOf('MSIE') !== -1) {
       canvas = document.createElement('canvas')
-      canvas.setAttribute('width', 400)
-      canvas.setAttribute('height', 400)
+      canvas.setAttribute('width', ww)
+      canvas.setAttribute('height', hh)
       canvas.setAttribute('id', 'canvas')
       document.getElementById('wheel').appendChild(canvas)
     }
@@ -201,14 +205,14 @@ const WheelComponent = ({
   }
   const clear = () => {
     const ctx = canvasContext
-    ctx.clearRect(0, 0, 400, 400)
+    ctx.clearRect(0, 0, ww, hh)
   }
   return (
     <div id='wheel'>
       <canvas
         id='canvas'
-        width='400'
-        height='400'
+        width={ww}
+        height={hh}
         style={{
           pointerEvents: isFinished && isOnlyOnce ? 'none' : 'auto'
         }}
